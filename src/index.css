@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 217 60% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 54% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 54% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 173 80% 40%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 160 84% 39%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 258 90% 66%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 173 80% 40%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+  body {
+    @apply bg-nourish-navy text-foreground font-['Inter'];
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.02] border border-white/[0.06] backdrop-blur-[20px] relative overflow-hidden;
+  }
+
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 50%, transparent 100%);
+  }
+
+  .gradient-text-teal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#14B8A6] via-[#10B981] to-[#06B6D4];
+  }
+
+  .gradient-text-warm {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#F59E0B] via-[#F97316] to-[#EF4444];
+  }
+
+  .shimmer-loading {
+    @apply relative overflow-hidden bg-white/[0.05];
+  }
+
+  .shimmer-loading::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
+  }
+}
+
+.leaflet-container {
+  background: #0A1628 !important;
+}
+
+.leaflet-tile-pane {
+  filter: brightness(0.6) contrast(1.2) saturate(0.3) hue-rotate(180deg);
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  @apply bg-nourish-card border border-white/10 text-foreground !important;
+  backdrop-filter: blur(10px);
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  @apply bg-nourish-card border border-white/10 text-foreground hover:bg-nourish-hover !important;
+}
